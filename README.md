@@ -34,6 +34,6 @@ npm run dev
 
 <figure > 
 <p align="center">
-  <img src="./assets/data-flow.png" alt="data-flow" style="background-color:white" />
+  <img src="./assets/data-flow.PNG" alt="data-flow" style="background-color:white" />
 </p>
 </figure>
