@@ -37,3 +37,11 @@ npm run dev
   <img src="./assets/data-flow.PNG" alt="data-flow" style="background-color:white" />
 </p>
 </figure>
+
+### Explanation
+
+- In this project architecture, the `client-app` serves as the primary frontend application, communicating with the `api-server` via API calls to a MySQL database.
+
+- When a GET request is sent to the `api-server`, it first checks the Redis cache for relevant data. If the cache contains the data, the `api-server` responds promptly to the `client-app` without querying the database, resulting in faster response times. However, in cases where the cache is empty, the `api-server` queries the database, retrieves the data, and caches it in Redis for future use.
+
+- For POST requests that involve data creation, the `api-server` publishes a message to the Redis pub/sub system and immediately responds positively to the client. The `worker-server`, which is subscribed to the Redis pub/sub, receives this message. It performs the necessary operations related to the request and finally stores the data in the database. This asynchronous processing allows the `api-serve`r to quickly acknowledge the client's request while the `worker-server` handles the background tasks efficiently
