@@ -29,3 +29,11 @@ npm run dev
 ```
 
 **Note: Please add all the environment variables from the "example.env" file added to each project**
+
+### Data-flow Diagram
+
+<figure > 
+<p align="center">
+  <img src="./assets/data-flow.png" alt="data-flow" style="background-color:white" />
+</p>
+</figure>
