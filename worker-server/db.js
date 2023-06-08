@@ -8,12 +8,3 @@ export const addListToDB = async (text) => {
   await connection.execute(query);
   await connection.end();
 };
-
-// get all lists from mysql db
-export const getListFromDB = async (text) => {
-  const query = `SELECT * FROM ${sqlTable}`;
-  const connection = await mysql.createConnection(dbConfigs);
-  const [data, _] = await connection.execute(query);
-  await connection.end();
-  return data;
-};
