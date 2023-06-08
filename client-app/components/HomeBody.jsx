@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputForm from "./InputForm";
 import TechSummary from "./TechSummary";
+import { createTech, getTech } from "@/libs/mysqlDb";
 
 const HomeBody = () => {
   const [userInput, setUserInput] = useState("");
@@ -11,14 +12,33 @@ const HomeBody = () => {
     { text: "AWS - priority (high)", id: 1 },
   ]);
 
+  // set tech-list on first render
+  useEffect(() => {
+    const loadTech = async () => {
+      try {
+        const { isCached, data } = await getTech();
+        setTechList(data);
+        setIsCache(isCached);
+      } catch (error) {
+        console.error("Error loading techList:", error);
+      }
+    };
+    loadTech();
+  }, []);
+
   // handle form submit list
   const handleSubmit = async () => {
-    console.log("handleSubmit");
+    await createTech(userInput);
+    const { isCached, data } = await getTech();
+    setTechList(data);
+    setIsCache(isCached);
   };
 
   // handle refresh list data
   const handleRefresh = async () => {
-    console.log("handleRefresh");
+    const { isCached, data } = await getTech();
+    setTechList(data);
+    setIsCache(isCached);
   };
 
   return (
