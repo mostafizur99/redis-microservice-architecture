@@ -1,7 +1,12 @@
+import HomeBody from "@/components/HomeBody";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen items-center justify-center p-24">
-      <h2 className="text-cyan-600">Hello Client</h2>
+    <main className="container mx-auto min-h-screen py-14">
+      <h2 className="text-cyan-600 text-center font-bold text-2xl mb-5">
+        Tech Summary
+      </h2>
+      <HomeBody />
     </main>
   );
 }
