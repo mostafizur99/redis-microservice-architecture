@@ -5,7 +5,7 @@ import {
   addTechToCache,
   deleteTechFromCache,
   getTechFromCache,
-  publishNews,
+  publishTech,
 } from "./redis.js";
 import { addListToDB, getListFromDB } from "./db.js";
 
@@ -35,7 +35,7 @@ app.post("/create", async (req, res) => {
     console.log("input text:", text);
     // await addListToDB(text);
     // await deleteTechFromCache();
-    await publishNews(text); // publish task to a redis channel
+    await publishTech(text); // publish task to a redis channel
     res.status(201).send({ message: "Tech List created successfully" });
   } catch (error) {
     console.log("create tech error==>", error);

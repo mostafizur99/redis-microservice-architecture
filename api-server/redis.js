@@ -27,8 +27,8 @@ export const deleteTechFromCache = async () => {
 };
 
 // publish to a redis channel (worker-server)
-export const publishNews = async (news) => {
+export const publishTech = async (tech) => {
   await redisClient.connect();
-  await redisClient.publish(redisChannel, news);
+  await redisClient.publish(redisChannel, tech);
   await redisClient.disconnect();
 };
